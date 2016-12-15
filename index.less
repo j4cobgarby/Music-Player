@@ -1,0 +1,145 @@
+// out: index.css, compress: true
+
+@font-face {
+	font-family: Montserrat;
+	src: url(assets/Montserrat-Regular.ttf);
+}
+
+@font-face {
+	font-family: Montserrat;
+	src: url(assets/Montserrat-Bold.ttf);
+}
+
+@debug: false;
+
+@left-width: 50%;
+@left-header-height: 40px;
+@search-width: 200px;
+@right-width: 50%;
+@artwork-height: 50%;
+@prog-bar-height: 10px;
+@song-caption-height: 100% - (50% + @prog-bar-height);
+
+@main-background-colour: #f9f9f9;
+@accent: #ee6b59;
+@prog-bar-colour: @accent;
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+* when (@debug = true) {
+	/*
+	 * Show borders around everything when @debug is true.
+	 */
+	outline: 0.5px solid #d1d1d1;
+}
+
+body {
+	background-color: @main-background-colour;
+	font-family: Montserrat;
+}
+
+div.container {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+div.left {
+	width: @left-width;
+	float: left;
+	height: 100%;
+	overflow-y: scroll;
+
+	div.left-header {
+		position: absolute;
+		width: @left-width;
+		height: @left-header-height;
+		background-color: @accent;
+		border-bottom: 2px solid @accent;
+
+		h3 {
+			vertical-align: middle;
+			padding: 10px;
+			height: 100%;
+			color: white;
+		}
+
+		div.search {
+			width: @search-width;
+			float: right;
+			height: 100%;
+			margin-top: -@left-header-height;
+			background-color: @main-background-colour;
+
+			input {
+				font-family: Montserrat;
+				color: #292929;
+				display: inline-block;
+				height: @left-header-height;
+				padding-left: 10px;
+				line-height: 40px;
+				width: 100%;
+				margin-top: 1px;
+			}
+		}
+	}
+	table.songs {
+		width: 100%;
+		display: table;
+		height: calc(~'100% - 40px');
+		margin-top: @left-header-height;
+		table-layout: fixed;
+		//overflow: scroll;
+		border-collapse: collapse;
+
+		tr {
+			text-align: left;
+
+			th {
+				height: 20px;
+				font-weight: normal;
+			}
+		}
+
+		tr.head-row {
+			vertical-align: text-top;
+			background-color: @accent;
+
+			th {
+				padding-left: 10px;
+				font-weight: bold;
+				padding-top: 10px;
+				padding-bottom: 20px;
+				color: white;
+			}
+		}
+	}
+}
+
+div.right {
+	width: @right-width;
+	float: right;
+	height: 100%;
+
+	img.cover {
+		width: 100%;
+	}
+
+	div.progress {
+		height: @prog-bar-height;
+
+		div.progress-done {
+			background-color: @prog-bar-colour;
+		}
+	}
+
+	div.song-caption {
+		width: 100%;
+		//height: calc(~'100% - 50vw');
+		height: auto;
+	}
+}
