@@ -1,33 +1,48 @@
 // out: index.css, compress: true
-
 @font-face {
 	font-family: Montserrat;
-	src: url(assets/Montserrat-Regular.ttf);
+	src: url("assets/Montserrat-Regular.ttf");
 }
-
 @font-face {
 	font-family: Montserrat;
-	src: url(assets/Montserrat-Bold.ttf);
+	src: url("assets/Montserrat-Bold.ttf");
 }
-
+@font-face {
+	font-family: 'Open Sans';
+	src: url("assets/OpenSans-Regular.ttf");
+}
+@font-face {
+	font-family: 'Open Sans B';
+	src: url("assets/OpenSans-Bold.ttf");
+}
 @debug: false;
-
-@left-width: 50%;
+@right-width: 520px;
+@left-width: calc(~'100% - 520px');
+/* Set the second value to right-width */
 @left-header-height: 40px;
 @search-width: 200px;
-@right-width: 50%;
 @artwork-height: 50%;
 @prog-bar-height: 10px;
 @song-caption-height: 100% - (50% + @prog-bar-height);
-
+@controls-width: 200px;
 @main-background-colour: #f9f9f9;
-@accent: #ee6b59;
+@accent: #ff7116;
 @prog-bar-colour: @accent;
+
+::-webkit-scrollbar {
+	width: 7px;
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	width: 4px;
+	background: @accent;
+}
 
 * {
 	box-sizing: border-box;
-	padding: 0;
 	margin: 0;
+	padding: 0;
 }
 
 * when (@debug = true) {
@@ -38,91 +53,123 @@
 }
 
 body {
+	font-family: 'Open Sans';
 	background-color: @main-background-colour;
-	font-family: Montserrat;
 }
 
 div.container {
+	position: absolute;
+	overflow: hidden;
 	width: 100%;
 	height: 100%;
-	position: absolute;
 }
 
 div.left {
-	width: @left-width;
 	float: left;
-	height: 100%;
 	overflow-y: scroll;
+	width: @left-width;
+	height: 100%;
 
 	div.left-header {
 		position: absolute;
 		width: @left-width;
 		height: @left-header-height;
-		background-color: @accent;
+		-webkit-user-select: none;
 		border-bottom: 2px solid @accent;
+		background-color: @accent;
 
 		h3 {
-			vertical-align: middle;
-			padding: 10px;
 			height: 100%;
+			padding: 10px;
+			vertical-align: middle;
 			color: white;
 		}
 
 		div.search {
-			width: @search-width;
 			float: right;
+			width: @search-width;
 			height: 100%;
 			margin-top: -@left-header-height;
 			background-color: @main-background-colour;
 
 			input {
-				font-family: Montserrat;
-				color: #292929;
-				display: inline-block;
-				height: @left-header-height;
-				padding-left: 10px;
+				font-family: 'Open Sans';
 				line-height: 40px;
+				display: inline-block;
 				width: 100%;
+				height: @left-header-height;
 				margin-top: 1px;
+				padding-left: 10px;
 			}
 		}
 	}
+
 	table.songs {
-		width: 100%;
 		display: table;
+		width: 100%;
 		height: calc(~'100% - 40px');
 		margin-top: @left-header-height;
+		margin-bottom: 20px;
 		table-layout: fixed;
-		//overflow: scroll;
 		border-collapse: collapse;
+		-webkit-user-select: none;
+
+		tr:nth-child(odd) {
+			background-color: darken(@main-background-colour, 2%);
+		}
+
+		tr:nth-child(even) {
+			background-color: @main-background-colour;
+		}
+
+		tr:hover {
+			font-family: Open Sans B;
+			font-weight: bold;
+			cursor: default;
+			color: white;
+			background-color: @accent;
+		}
 
 		tr {
 			text-align: left;
 
 			th {
-				height: 20px;
-				font-weight: normal;
-			}
-		}
-
-		tr.head-row {
-			vertical-align: text-top;
-			background-color: @accent;
-
-			th {
-				padding-left: 10px;
+				font-family: Open Sans B;
 				font-weight: bold;
-				padding-top: 10px;
-				padding-bottom: 20px;
+				margin-bottom: 5px;
+				padding-top: 5px;
+				padding-bottom: 5px;
+				padding-left: 10px;
 				color: white;
+				background-color: @accent;
+			}
+
+			td {
+				font-weight: normal;
+				//max-height: 20px;
+				padding-top: 5px;
+				padding-bottom: 5px;
+				padding-left: 8px;
+				height: 20px;
+
+				div {
+					width: 100%;
+					height: 100%;
+					overflow: hidden;
+				}
 			}
 		}
 	}
 }
 
+div.in-table {
+	width: 100%;
+	height: 30px;
+}
+
 div.right {
-	width: @right-width;
 	float: right;
+	width: @right-width;
 	height: 100%;
 
 	img.cover {
@@ -133,13 +180,65 @@ div.right {
 		height: @prog-bar-height;
 
 		div.progress-done {
+			position: absolute;
+			width: 20%;
+			height: 100%;
+			min-height: 100%;
 			background-color: @prog-bar-colour;
 		}
 	}
 
 	div.song-caption {
 		width: 100%;
-		//height: calc(~'100% - 50vw');
-		height: auto;
+		height: hw;
+
+		div.controls {
+			position: relative;
+			display: block;
+			float: left;
+			width: @controls-width;
+			height: auto;
+			margin-left: 30px;
+
+			.playback-img {
+				width: 40px;
+			}
+
+			.playback-img:hover {
+				filter: brightness(97%);
+			}
+
+			.playback-img:active {
+				filter: brightness(93%);
+			}
+
+			#pause {
+				width: 60px;
+				padding: 6px 6px 0;
+			}
+
+			.resume {
+				content: url('assets/resume-default.png');
+			}
+			// Volume controls
+			div.volume-slider {
+				width: 200px;
+				height: 6px;
+				background-color: #d7d7d7;
+
+				div.vol-thumb {
+					width: 10px;
+					height: 10px;
+					background-color: @accent;
+				}
+			}
+		}
+
+		div.song-info {
+			display: block;
+			float: right;
+			width: auto;
+			height: 100%;
+		}
 	}
 }

@@ -8,237 +8,60 @@
 		<meta charset="utf-8">
 		<title>Electron boilerplate</title>
 		<link rel="stylesheet" href="index.css">
+		<script src="playback.js"></script>
 	</head>
-	<body>
+	<body onload=" // Initialization JS here:
+		initPlayback();
+	">
 		<div class="container">
 			<div class="left">
 				<div class="left-header">
 					<h3 id="top-info">Songs: x, Library Size: yGB</h2>
-					<div class="search">
-						<input type="text" placeholder="Search..">
-					</div>
 				</div>
 				<table class="songs">
-					<tr class="head-row">
-						<th>Song</th>
-						<th>Album</th>
-						<th>Artist</th>
-						<th>Length</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
-					<tr>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-						<th>Test</th>
-					</tr>
+					<thead>
+						<tr class="table-head">
+							<th>Song</th>
+							<th>Album</th>
+							<th>Artist</th>
+							<th>Length</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><div>Test</div></td>
+							<td><div>Test</div></td>
+							<td><div>Test</div></td>
+							<td><div>Test</div></td>
+						</tr>
+						<tr>
+							<td><div>Test</div></td>
+							<td><div>Test</div></td>
+							<td><div>Test</div></td>
+							<td><div>Test</div></td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 			<div class="right">
-				<img src="assets/artwork-placeholder.png" alt="" class="cover" id="cover">
+				<img src="assets/artwork-placeholder.png" alt="" class="cover"
+					id="cover">
 				<div class="progress">
 					<div class="progess-done"></div>
 				</div>
 				<div class="song-caption">
 					<div class="controls">
-
+						<div class="playback">
+							<img src="assets/rewind-default.png"
+								id="rewind" class="playback-img">
+							<img src="assets/pause-default.png"
+								id="pause" class="playback-img">
+							<img src="assets/forward-default.png"
+								id="forward" class="playback-img">
+						</div>
+						<div id="volSlider" class="volume-slider">
+							<div id="volThumb" class="vol-thumb"></div>
+						</div>
 					</div>
 					<div class="song-info">
 						<p>Name - Album</p>
